@@ -8,6 +8,7 @@ from django.db.models import Sum
 
 
 class Category(models.Model):
+    """model tying to category objects"""
     name = models.CharField(blank=False, max_length=32, unique=True)
     url = models.CharField(blank=False, max_length=64, default='')
 
@@ -15,15 +16,18 @@ class Category(models.Model):
         return self.name.encode('utf-8')
 
     def count_books(self):
+        # counts books associated with the category
         val = Book.objects.filter(category=self.id)
         return len(val)
 
     def average_price(self):
+        # averages book prices associated with the category
         val = Book.objects.filter(category=self.id)
         return round(val.aggregate(Sum('price'))['price__sum'] / len(val), 2)
 
 
 class Book(models.Model):
+    """model tying to book objects"""
     upc = models.CharField(unique=True, max_length=64)
     title = models.CharField(blank=False, max_length=32)
     rating = models.IntegerField(blank=False)
