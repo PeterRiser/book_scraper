@@ -1,0 +1,30 @@
+{% load render_table from django_tables2 %}
+<!-- <head>
+    <title>List of books</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    <body>
+
+</body> -->
+<head>
+    <title>List of categories</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    <h1 style='margin:15px'>Welcome!</h1>
+    <div style="width: 90%;margin: 0 auto;">
+    <h3>Below is two tables, the first is a list of all the categories of books and their respective totals and averages. The second is a paginated list of all the books on the website.
+    </h3>
+
+    <p>The answer to question 1 is {{phil}}</p>
+  </div>
+
+    <body>
+      <h3 style='margin:15px'>Categories</h3>
+        <div style="font-size:8pt; width: 75%;margin: 0 auto;">
+        {% render_table categories %}
+      </div>
+      <h3 style='margin:15px'>Books</h3>
+      <div style="font-size:10pt; width: 75%;margin: 0 auto;">
+      {% render_table books %}
+    </div>
+</body>
