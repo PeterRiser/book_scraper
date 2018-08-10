@@ -9,7 +9,10 @@ from rest_framework.exceptions import ValidationError
 
 
 class BookSerializer:
+    """all validators below effectively do the same thing. they take the data. clean it to be correct type"""
+
     def validate(self, data):
+        # validation function to call all other validators
         valid_data = {}
         valid_data['upc'] = self.validate_upc(data['upc'])
         valid_data['title'] = self.validate_title(data['title'])
@@ -50,6 +53,7 @@ class BookSerializer:
 
     def validate_category(self, value):
         try:
+            # because this is a foriegn key, we check if the category exists
             ret = Category.objects.get(name=value.encode())
             return ret
         except ObjectDoesNotExist as e:
