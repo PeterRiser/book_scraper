@@ -29,7 +29,7 @@ class Category(models.Model):
 class Book(models.Model):
     """model tying to book objects"""
     upc = models.CharField(unique=True, max_length=64)
-    title = models.CharField(blank=False, max_length=32)
+    title = models.CharField(blank=False, max_length=64)
     rating = models.IntegerField(blank=False)
     category = models.ForeignKey(Category)
     in_stock = models.IntegerField(blank=False)
